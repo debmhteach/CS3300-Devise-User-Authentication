@@ -35,7 +35,7 @@ end
 ### Step 3 - Installing and Configuring Devise
 
 1. Add the devise gem to your Gemfile after gem "rails" <br>
-   `gem "rails" , "~> 7.0.3"` <br>
+   `gem "rails" , "~> 6.1.7"` <br>
    `gem "devise"`
 2. Refresh/ install all the gems in your project<br>
 `bundle install`
