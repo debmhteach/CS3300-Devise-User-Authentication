@@ -55,7 +55,7 @@ end
 ```Ruby
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new edit update destroy]
+  before_action :authenticate_user!, only: %i[ new edit create update destroy]
  ```
 
 13. Open app/views/layouts/application.html.erb and add the following code inside the HTML body tags.<br>
