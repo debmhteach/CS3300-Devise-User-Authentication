@@ -79,11 +79,8 @@ class ProjectsController < ApplicationController
   </body>
 ```
 
-14. At this point you can re-start your rails server by stopping it with *ctrl + c*  and restarting with the following command <br>
-`rails s -b 0.0.0.0`
 
-
-15. Open the app/views/projects/index.html.erb file and update to only show edit destroy buttons if logged in
+14. Open the app/views/projects/index.html.erb file and update to only show edit destroy buttons if logged in
 ```HTML
         <div class="btn-group" role="group" aria-label="Basic example">       
         <%= link_to 'Show', project, class:"btn btn-outline-primary"%>
@@ -93,7 +90,7 @@ class ProjectsController < ApplicationController
         <% end %>  
         </div>
 ```
-16. View the changes that you made by navigating to http://localhost:3000/
+15. View the changes that you made by restarting your server and navigating to http://localhost:3000/
 
 <hr>
 
