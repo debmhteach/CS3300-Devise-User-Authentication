@@ -47,7 +47,7 @@ end
 
 10. In /config/initializer/devise.rb, Uncomment the following around line 255 # config.scoped_views = false 
     change false to true
-     # config.scoped_views = ftrue 
+    config.scoped_views = true 
 
 11. Open app/controllers/projects_controller.rb and update the following
 ```Ruby
