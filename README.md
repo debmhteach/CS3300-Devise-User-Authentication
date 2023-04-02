@@ -28,7 +28,30 @@ Devise.setup do |config|
     # ... comments...
 end
 ```
-5. Open app/views/layouts/application.html.erb and add the following code inside the HTML body tags.<br>
+
+
+
+### Step 2 - Create the User model with Devise
+1. Run the following generator command to generate the devise user model<br>
+`bundle exec rails g devise user`
+2. Confirm that the following code exists within your config/routes.rb file **above** the code for `root "home#index` if it does not exist, make sure to add it.<br>
+```ruby
+     devise_for :users
+     root "projects#index"
+     resources :projects
+```
+3. To view all the available routes, we can run the following command and get an output in the command line of all possible routes that we can provide to the user<br>
+`bundle exec rails routes`
+4. Make all the database migrations and place the user's table in the database<br>
+`bundle exec rake db:migrate`
+5. Open app/controllers/projects_controller.rb and update the following
+```Ruby
+class ProjectsController < ApplicationController
+  before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new edit create]
+ ```
+
+6. Open app/views/layouts/application.html.erb and add the following code inside the HTML body tags.<br>
 ```Ruby
 # Your code should look something like this
 ...
@@ -49,22 +72,9 @@ end
   </body>
 ```
 
-### Step 2 - Create the User model with Devise
-1. Run the following generator command to generate the devise user model<br>
-`bundle exec rails g devise user`
-2. Confirm that the following code exists within your config/routes.rb file **above** the code for `root "home#index` if it does not exist, make sure to add it.<br>
-```ruby
-     devise_for :users
-     root "projects#index"
-     resources :projects
-```
-3. To view all the available routes, we can run the following command and get an output in the command line of all possible routes that we can provide to the user<br>
-`bundle exec rails routes`
-4. Make all the database migrations and place the user's table in the database<br>
-`bundle exec rake db:migrate`
-5. At this point you can re-start your rails server by stopping it with *ctrl + c*  and restarting with the following command <br>
+7. At this point you can re-start your rails server by stopping it with *ctrl + c*  and restarting with the following command <br>
 `rails s -b 0.0.0.0`
-6. View the changes that you made by navigating to http://localhost:3000/
+8. View the changes that you made by navigating to http://localhost:3000/
 
 
 ### Step 5 - Modifying the Landing Page
@@ -77,7 +87,7 @@ end
           <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-primary" %>
         <% end %>  
         </div>
-
+```
 3. View the changes you have made by navigating to http://localhost:3000/ <br>
 
 <hr>
