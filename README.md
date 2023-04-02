@@ -1,38 +1,13 @@
 
 # Rails - Devise User Authentication
 
-### Step 1 - Change directories into your portfolio application <br>
-    `cd <Your application name>`
+Here you will set up a user login.
 
-### Step 2 - Create a Landing/ Index page
+Go to your Portfolio project docker environment and cd to your portfolio project directory.
 
-1. Begin by adding a route to the routes.rb file found in config/routes.rb
-2. Modify the root command previously added to the file to now state <br>
-`root to: "home#index`
-3. Next, create the app/controllers/home_controller.rb file and add ALL of the following code.
 
-```ruby
-# This is a basic HomeController with an index that does one thig: render 
-# the view file associated with the controller action
 
-class HomeController < ApplicationController
-    def index
-        render
-    end
-end
-   ```
-
-4. Create a new directory in the app/views directory. Run this in the command line.<br>
-`mkdir app/views/home/`
-5. Create a new html file in the app/views/home/ directory<br>
-`touch app/views/home/index.html.erb`
-6. Add the following to the file you just created <br>
-`<h1> Hello World, This is the homepage of my application!</h1>`
-7. Start the rails server with the following command on the command line <br>
-`rails s -b 0.0.0.0`
-8. View the changes that you made by navigating to http://localhost:3000/
-
-### Step 3 - Installing and Configuring Devise
+### Step 1 - Installing and Configuring Devise
 
 1. Add the devise gem to your Gemfile after gem "rails" <br>
    `gem "rails" , "~> 6.1.7"` <br>
@@ -57,69 +32,52 @@ end
 ```Ruby
 # Your code should look something like this
 ...
-<body>
-    <p class="notice"><%= notice %></p> 
-    <p class="alert"><%= alert %></p> 
+  <body>
+  <p class="navbar-text float-right">
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
+  </p>
+  <p class="notice"><%= notice %></p> 
+  <p class="alert"><%= alert %></p> 
     <%= yield %>
-</body>
+  </body>
 ```
 
-### Step 4 - Create the User model with Devise
+### Step 2 - Create the User model with Devise
 1. Run the following generator command to generate the devise user model<br>
 `bundle exec rails g devise user`
 2. Confirm that the following code exists within your config/routes.rb file **above** the code for `root "home#index` if it does not exist, make sure to add it.<br>
 ```ruby
-    devise_for :users
+     devise_for :users
+     root "projects#index"
+     resources :projects
 ```
-3. **[OPTIONAL]** - To view all the available routes, we can run the following command and get an output in the command line of all possible routes that we can provide to the user<br>
+3. To view all the available routes, we can run the following command and get an output in the command line of all possible routes that we can provide to the user<br>
 `bundle exec rails routes`
 4. Make all the database migrations and place the user's table in the database<br>
 `bundle exec rake db:migrate`
 5. At this point you can re-start your rails server by stopping it with *ctrl + c*  and restarting with the following command <br>
 `rails s -b 0.0.0.0`
 6. View the changes that you made by navigating to http://localhost:3000/
-7. If you don't see changes, that's okay! now navigate to http://localhost:3000/users/sign_up and you should see a new user registration form!
+
 
 ### Step 5 - Modifying the Landing Page
-1. Open the app/views/home/index.html.erb file and replace the contents of the file with the following
+1. Open the app/views/projects/index.html.erb file and update to only show edit destroy buttons if logged in
 ```HTML
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CS3300 Portfolio Project</title>
-
-  </head>
-  
-  <body>
-    <div style="margin: 5% 0 0 10%;">
-    <h1>Projects</h1>   
-    <h1>CS 3300 Portfolio Project - Fall 2022</h1>
-
-      <div style="padding-left: 2rem;">
-        <h4 style="color: blue"> [Replace your name here] </h3>
-        
-
-        <!--- Explain what the block of code below this line is doing --->
-
+        <div class="btn-group" role="group" aria-label="Basic example">       
+        <%= link_to 'Show', project, class:"btn btn-outline-primary"%>
         <% if user_signed_in? %>
-          
-          <div> Welcome <%= current_user.email %> </div>
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
-        
-        <% else %>
-          <a href="/users/sign_in"> Sign in</a>
-        <% end %>
+          <%= link_to 'Edit', edit_project_path(project), class:"btn btn-outline-primary" %>
+          <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-primary" %>
+        <% end %>  
+        </div>
 
-      </div>
-    </div>
-  </body>
-</html>
-```
-
-2. Modify the code to include your name where it says **[Replace your name here]** around line 16.<br>
 3. View the changes you have made by navigating to http://localhost:3000/ <br>
 
 <hr>
