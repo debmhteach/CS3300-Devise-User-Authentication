@@ -96,7 +96,8 @@ class ProjectsController < ApplicationController
 ### Run rspec tests
 
 ### Step 2 - Set Up Testing with FactoryBot for RSpec
-1. 
+
+Some of your tests from GE06 will fail since you added the requirement to only be able to create, edit and destroy when logged in. Here is a resource to help you and your group create a controller test https://www.matthewhoelter.com/2019/09/12/setting-up-and-testing-rails-6.0-with-rspec-factorybot-and-devise.html 
 
 # CircleCI Setup
 ### Continuous Integration Continuous Delivery Pipeline
@@ -131,7 +132,7 @@ workflows:
 ```
 4. You will need to push your code to Github
 
-### Step 2 - Setting up a CircleCI account
+### Step 3 - Setting up a CircleCI account
 1. Go to https://circleci.com and Sign-in with GitHub
    1. Accept the Authorization of Circle CI (you'll be re-directed to GitHub and then back to CircleCI)
 2. Select the repository for your portfolio project (this should be listed in CircleCI's interface)<br>
