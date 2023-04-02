@@ -78,16 +78,17 @@ class ProjectsController < ApplicationController
     <%= yield %>
   </body>
 ```
+14. View the changes that you made by restarting your server and navigating to http://localhost:3000/  and test that you can't create new, edit update or destroy
 
 
-14. Open the app/views/projects/index.html.erb file and update to only show edit destroy new buttons buttons if logged in. Here is the code to determine if logged in
+15. Open the app/views/projects/index.html.erb file and update to only show edit destroy new buttons buttons if logged in. Here is the code to determine if logged in
 ```HTML
 
         <% if user_signed_in? %>
 
         <% end %>  
 ```
-15. View the changes that you made by restarting your server and navigating to http://localhost:3000/
+15. Test the changes that you made for not displaying the buttons
 
 <hr>
 
