@@ -92,6 +92,12 @@ class ProjectsController < ApplicationController
 
 <hr>
 
+# Testing
+### Run rspec tests
+
+### Step 2 - Set Up Testing with FactoryBot for RSpec
+1. 
+
 # CircleCI Setup
 ### Continuous Integration Continuous Delivery Pipeline
 
