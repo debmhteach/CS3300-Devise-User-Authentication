@@ -48,15 +48,17 @@ end
 10. In /config/initializer/devise.rb, Uncomment the following around line 255 # config.scoped_views = false 
     change false to true
     config.scoped_views = true 
+    
+11. Start rails and go to http://localhost:3000/users/sign_in  to see the login page
 
-11. Open app/controllers/projects_controller.rb and update the following
+12. Open app/controllers/projects_controller.rb and update the following
 ```Ruby
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ new edit update destroy]
  ```
 
-10. Open app/views/layouts/application.html.erb and add the following code inside the HTML body tags.<br>
+13. Open app/views/layouts/application.html.erb and add the following code inside the HTML body tags.<br>
 ```Ruby
 # Your code should look something like this
 ...
@@ -77,11 +79,11 @@ class ProjectsController < ApplicationController
   </body>
 ```
 
-11. At this point you can re-start your rails server by stopping it with *ctrl + c*  and restarting with the following command <br>
+14. At this point you can re-start your rails server by stopping it with *ctrl + c*  and restarting with the following command <br>
 `rails s -b 0.0.0.0`
-12. View the changes that you made by navigating to http://localhost:3000/
 
-13. Open the app/views/projects/index.html.erb file and update to only show edit destroy buttons if logged in
+
+15. Open the app/views/projects/index.html.erb file and update to only show edit destroy buttons if logged in
 ```HTML
         <div class="btn-group" role="group" aria-label="Basic example">       
         <%= link_to 'Show', project, class:"btn btn-outline-primary"%>
@@ -91,7 +93,7 @@ class ProjectsController < ApplicationController
         <% end %>  
         </div>
 ```
-3. View the changes you have made by navigating to http://localhost:3000/ <br>
+16. View the changes that you made by navigating to http://localhost:3000/
 
 <hr>
 
