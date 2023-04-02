@@ -80,15 +80,12 @@ class ProjectsController < ApplicationController
 ```
 
 
-14. Open the app/views/projects/index.html.erb file and update to only show edit destroy buttons if logged in
+14. Open the app/views/projects/index.html.erb file and update to only show edit destroy new buttons buttons if logged in. Here is the code to determine if logged in
 ```HTML
-        <div class="btn-group" role="group" aria-label="Basic example">       
-        <%= link_to 'Show', project, class:"btn btn-outline-primary"%>
+
         <% if user_signed_in? %>
-          <%= link_to 'Edit', edit_project_path(project), class:"btn btn-outline-primary" %>
-          <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-primary" %>
+
         <% end %>  
-        </div>
 ```
 15. View the changes that you made by restarting your server and navigating to http://localhost:3000/
 
