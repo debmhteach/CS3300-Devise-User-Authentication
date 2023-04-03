@@ -92,12 +92,7 @@ class ProjectsController < ApplicationController
 
 <hr>
 
-# Testing
-### Run rspec tests
 
-### Step 2 - Set Up Testing with FactoryBot for RSpec
-
-Some of your tests from GE06 will fail since you added the requirement to only be able to create, edit and destroy when logged in. Here is a resource to help you and your group create a controller test https://www.matthewhoelter.com/2019/09/12/setting-up-and-testing-rails-6.0-with-rspec-factorybot-and-devise.html 
 
 # CircleCI Setup
 ### Continuous Integration Continuous Delivery Pipeline
