@@ -43,11 +43,11 @@ end
 `bundle exec rake db:migrate`
 
 9. Generate the views associated with devise by running the following command.
-#rails generate devise:views users
+`rails generate devise:views users`
 
 10. In /config/initializer/devise.rb, Uncomment the following around line 255 # config.scoped_views = false 
     change false to true
-    config.scoped_views = true 
+    `config.scoped_views = true` 
     
 11. Start rails and go to http://localhost:3000/users/sign_in  to see the login page
 
